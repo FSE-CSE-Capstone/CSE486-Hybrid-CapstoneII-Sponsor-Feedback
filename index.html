@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CSE 485 Online Capstone I Sponsor Feedback Survey</title>
+  <title>CSE 486 Capstone II Sponsor Feedback Survey</title>
+
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -25,13 +26,13 @@
       </div>
 
       <!-- FORM TITLE: stays visible across all pages -->
-      <h2 class="form-title" id="survey-title">CSE 485 Online Capstone I Sponsor Feedback Survey</h2>
+      <h2 class="form-title" id="survey-form-title">CSE 486 In-Person Capstone II Sponsor Feedback Survey</h2>
 
-      <!-- Instruction under title: only on identity page, toggled via JS -->
+      <!-- Instruction under title: only on first page (identity). Toggled via JS -->
       <p id="under-title" class="lead under-title">Enter your name and email to continue.</p>
 
-      <!-- Card wrapping all stages -->
-      <section class="card" aria-labelledby="survey-title">
+      <!-- Card (form) — aria-labelledby points to the survey form title above -->
+      <section class="card" aria-labelledby="survey-form-title">
 
         <!-- STAGE 1: Identity -->
         <div id="stage-identity" class="stage" data-stage="identity">
@@ -39,10 +40,12 @@
             <label for="fullName">Your name</label>
             <input id="fullName" name="fullName" type="text" placeholder="Jane Doe" autocomplete="name" />
           </div>
+
           <div class="form-row">
             <label for="email">Your email</label>
             <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
           </div>
+
           <div class="actions">
             <button id="identitySubmit" class="btn btn-primary" type="button">Continue</button>
           </div>
@@ -52,7 +55,7 @@
         <div id="stage-projects" class="stage" style="display:none;">
 
           <!-- Instructions card -->
-          <div class="section section-projects" aria-labelledby="projects-heading">
+          <div class="section section-projects" aria-label="Evaluation instructions">
             <div class="instructions-card">
               <div id="projects-instructions" class="projects-instructions" aria-live="polite">
                 <p><strong>Please follow these steps to evaluate students:</strong></p>
@@ -61,7 +64,6 @@
                   <li><strong>Rate each student</strong> by choosing the option that best reflects their performance.</li>
                   <li><strong>Provide optional comments</strong> in the box below to share any additional feedback — this is encouraged but not required.</li>
                   <li>When finished, click <strong>Submit ratings for project</strong>. Use Back to return to the previous screen if needed.</li>
-                  <li><strong>All reviews are due by December 1st.</strong></li>
                 </ol>
                 <p><strong>If you prefer to provide general feedback for the team as a whole</strong>, complete <strong>only the last row</strong> of each rating matrix (labeled for "Team Overall") instead of rating each student individually.</p>
                 <ul>
@@ -79,20 +81,18 @@
           </div>
 
           <!-- Project list card -->
-          <section class="project-list-card">
+          <section class="project-list-card" aria-labelledby="projects-heading">
             <h2 id="projects-heading">Project List <span id="progress-counter" class="progress-counter"></span></h2>
-            <!-- FIX: was <div>, must be <ul> for valid list semantics -->
+            <!-- JS populates this list; must be <ul> so <li> children are valid -->
             <ul id="project-list">
-              <!-- project items inserted here by JS -->
             </ul>
           </section>
 
-          <!-- Matrix section — static #matrix-info removed; JS inserts it dynamically -->
+          <!-- Matrix section: JS injects #matrix-info BEFORE #matrix-container -->
+          <!-- JS injects .section.section-comment AFTER #matrix-container -->
           <div class="section section-matrix" aria-live="polite">
             <div id="matrix-container" class="matrix-container"></div>
           </div>
-
-          <!-- Comment section injected here by JS (after matrix-container) -->
 
           <div class="form-status" id="form-status" aria-live="polite"></div>
 
@@ -120,14 +120,14 @@
 
       </section>
 
-      <footer class="footer"><small>Built for your online capstone I course.</small></footer>
+      <footer class="footer"><small>Built for your in-person capstone II course.</small></footer>
     </div>
   </main>
 
   <!--
-    SURVEY_ROUND: Change this value at the start of each semester to isolate
-    localStorage data from previous rounds. Examples: 'spring2026', 'fall2026'.
-    Stale keys from previous rounds are automatically removed on page load.
+    SURVEY_ROUND: Change this value at the start of each new semester.
+    Format example: 'spring2026', 'fall2026', 'round3', etc.
+    Changing this value automatically isolates saved progress from previous semesters.
   -->
   <script>window.SURVEY_ROUND = 'round2';</script>
   <script src="scripts.js"></script>
