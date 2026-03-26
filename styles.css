@@ -255,6 +255,7 @@ input:focus, select:focus, textarea:focus {
   color: var(--accent-2);
 }
 .progress-counter {
+   margin-left: auto;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--muted);
