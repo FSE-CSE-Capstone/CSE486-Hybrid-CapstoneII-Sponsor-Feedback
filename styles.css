@@ -1,5 +1,5 @@
 /* ============================================================
-   CSE 486 Capstone Sponsor Evaluation – styles.css
+   CSE 486 Hybrid Capstone Sponsor Evaluation – styles.css
    ============================================================ */
 
 /* ── CSS Custom Properties ── */
@@ -243,7 +243,7 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 8px;
 }
@@ -267,7 +267,7 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   flex-direction: column;
   gap: 10px;
-   padding: 12px 0 0 0;
+  padding: 0;
   margin: 0;
   list-style: none;
 }
@@ -351,7 +351,6 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid rgba(10,12,30,0.05) !important;
   box-shadow: 0 8px 24px rgba(11,18,40,0.05) !important;
 }
-
 .matrix-criterion-title {
   margin: 0 0 6px 0;
   font-size: 0.98rem;
@@ -566,5 +565,4 @@ col.col-radio-def   { width: 7%;  }
   .site-header, .footer, .actions, .btn { display: none !important; }
   body { background: #fff !important; }
   .card { box-shadow: none !important; border: none !important; }
-}
 }
